@@ -1,0 +1,377 @@
+#container{
+	width: 100%;
+}
+
+.home{
+	@include SubItem();
+	position: fixed;
+	.color{
+		@include SubItem();
+		.color1{
+			background: #FC0204;
+		}
+		.color2{
+			background: #FC9A03;
+		}
+		.color3{
+			background: #FFFF01;
+		}
+		.color4{
+			background: #018619;
+		}
+		.color5{
+			background: #191EFE;
+		}
+		.color6{
+			background: #83008A;
+		}
+		>a{
+			display: block;
+			float: left;
+			width: per(1, 6);
+			position: relative;
+			height: 100%;
+			&:before, &:after{
+				@include SubItem();
+			}
+
+			&:before{
+				content:'';
+				background: url(../img/grid.svg) 0 0/4px;
+				opacity: 0.35;
+				transition-duration: 0.35s;
+			}
+			&:after{
+				content: attr(data-title);
+				line-height: 100vh;
+				text-align: center;
+				transition-duration: 0.35s;
+				opacity: 0;
+			}
+
+			&:hover{
+				&:before{
+					top: 0.3em;
+					left: 0.3em;
+					height: calc(100% - 0.6em);
+					width: calc(100% - 0.6em);
+					opacity: 0.25;
+				}
+
+				&:after{
+					opacity: 1;
+				}
+			}
+		}
+
+	}
+
+	.form{
+		.overlay{
+			@include SubItem();
+			content: '';
+			background: url(../img/grid.png) 0 0/2px;
+			opacity: 0.1;
+		}
+		@include SubItem();
+		display: none;
+		width: per(1, 6);
+
+		.icon-farm{
+			font-size: 0.12em;
+			color: #fff;
+			position: absolute;
+			width: 1em;
+			height: 1em;
+
+			&.i1{
+				top: 0.9em;
+				left: 0.8em;
+			}
+			&.i2{
+				top: 0.9em;
+				right: 1.3em;
+			}
+			&.i3{
+				bottom: 1.4em;
+				left: 0.8em;
+			}
+			&.i4{
+				bottom: 1.4em;
+				right: 1.3em;
+			}
+		}
+		aside{
+			font-family: 'Century Gothic';
+			@include SubItem();
+			padding: 0.10em 0.5em;
+			width: calc(100% - 0.4em);
+			color: #fff;
+			border: 0.05em solid #fff;
+			height: calc(100% - 0.4em);
+			left: 0.2em;
+			top: 0.2em;
+
+			span{
+				display: block;
+				text-transform: uppercase;
+			}
+
+			input{
+				text-transform: none;
+				background: rgba(0,0,0,0);
+				border: 0;
+			}
+
+		}
+		img, canvas{
+			@include SubItem();
+		}
+		.confirm{
+			color: #fff;
+			font-size: 0.5em;
+			border: 0.08em solid #fff;
+			position: absolute;
+			right: 0.5em;
+			bottom: 0.5em;
+			border-radius: 50%;
+			opacity: 0.5;
+			transition-duration: 0.35s;
+			&:hover{
+				opacity: 1;
+			}
+
+			.icon-magaphone{
+			}
+		}
+	}
+	&.pick1{
+
+		.form{
+			background: #FC0204;
+			display: block;
+			left: 0;
+			@include animation(
+				pick1 0.5s 1 linear forwards 0s
+			);
+		}
+	}
+
+	&.pick2{
+
+		.form{
+			background: #FC9A03;
+			display: block;
+			left: per(1,6);
+			@include animation(
+				pick2 0.5s 1 linear forwards 0s
+			);
+		}
+	}
+	&.pick3{
+
+		.form{
+			background: #FFFF01;
+			display: block;
+			left: per(2,6);
+			@include animation(
+				pick3 0.5s 1 linear forwards 0s
+			);
+		}
+	}
+	&.pick4{
+
+		.form{
+			background: #018619;
+			display: block;
+			left: per(3,6);
+			@include animation(
+				pick4 0.5s 1 linear forwards 0s
+			);
+		}
+	}
+	&.pick5{
+
+		.form{
+			background: #191EFE;
+			display: block;
+			left: per(4,6);
+			@include animation(
+				pick5 0.5s 1 linear forwards 0s
+			);
+		}
+	}
+	&.pick6{
+
+		.form{
+			background: #83008A;
+			display: block;
+			left: per(5,6);
+			@include animation(
+				pick6 0.5s 1 linear forwards 0s
+			);
+		}
+	}
+	&.pick1,&.pick2,&.pick3,&.pick4,&.pick5,&.pick6{
+		>.overlay{
+			display: block;
+			cursor: pointer;
+			@include animation(
+				fadeIn 0.5s 1 linear forwards 0s
+			);
+		}
+	}
+
+	>.overlay{
+		@include SubItem();
+		display: none;
+		background: url(../img/grid.svg) 0 0/4px;
+	}
+}
+
+@include keyframes( pick1 )
+{
+    from {
+		opacity: 0;
+		left: 0;
+		width: per(1,6);
+		height: 100%;
+	}
+	85% {
+		opacity: 0;
+		left: 0;
+		width: per(1,6);
+		height: 100%;
+	}
+	to{
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+}
+@include keyframes( pick2 )
+{
+    from {
+		opacity: 0;
+		left: per(1,6);
+		width: per(1,6);
+		height: 100%;
+	}
+	99% {
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+	to{
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+}
+@include keyframes( pick3 )
+{
+    from {
+		opacity: 0;
+		left: per(2,6);
+		width: per(1,6);
+		height: 100%;
+	}
+	99% {
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+	to{
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+}
+@include keyframes( pick4 )
+{
+    from {
+		opacity: 0;
+		left: per(3,6);
+		width: per(1,6);
+		height: 100%;
+	}
+	99% {
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+	to{
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+}
+@include keyframes( pick5 )
+{
+    from {
+		opacity: 0;
+		left: per(4,6);
+		width: per(1,6);
+		height: 100%;
+	}
+	99% {
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+	to{
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+}
+@include keyframes( pick6 )
+{
+    from {
+		opacity: 0;
+		left: per(5,6);
+		width: per(1,6);
+		height: 100%;
+	}
+	99% {
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+	to{
+		opacity: 1;
+		height: 600px;
+		left: calc((100% - 1200px) / 2);
+		top: calc((100% - 600px) / 2);
+		width: 1200px;
+	}
+}
+@include keyframes( fadeIn )
+{
+    from {
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
